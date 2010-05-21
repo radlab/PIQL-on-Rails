@@ -60,3 +60,5 @@ class Java::ScalaCollectionImmutable::List
   end
 end
 
+loader_path = "#{RAILS_ROOT}/db/loader.rb"
+require loader_path if File.exists?(loader_path)
