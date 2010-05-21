@@ -14,6 +14,10 @@ module PIQLEntity
       self.put(key, value)
     end
   end
+
+  def save (env = $piql_env)
+    super(env)
+  end
 end
 
 def get_piql_classes(path = PIQL_JAR_PATH)
