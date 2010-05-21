@@ -20,6 +20,12 @@ module PIQLEntity
   end
 end
 
+class Query
+  def self.method_missing(symbol, *args)
+    Queries.send(symbol, *args << $piql_env)
+  end
+end
+
 def get_piql_classes(path = PIQL_JAR_PATH)
   jar = JarFile.new(path)
   jar.entries.map { |entry| 
