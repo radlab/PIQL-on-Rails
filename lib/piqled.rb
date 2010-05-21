@@ -24,7 +24,8 @@ def require_models(classes)
   not_entities = ["Queries", "Configurator"]
   entities = classes.map {|c| c.gsub("piql.", "")} - not_entities
   entities.each do |e|
-    require "#{RAILS_ROOT}/app/models/#{e.downcase}.rb"
+    file_name = "#{RAILS_ROOT}/app/models/#{e.downcase}.rb"
+    require file_name if File.exists?(file_name)
   end
 end
 
@@ -58,3 +59,4 @@ class Java::ScalaCollectionImmutable::List
     self.collect {|element| element}
   end
 end
+
