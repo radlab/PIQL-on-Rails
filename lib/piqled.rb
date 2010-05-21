@@ -7,6 +7,13 @@ module PIQLEntity
       self.put(str[0..-2], args[0])
     end
   end
+
+  def initialize(h = {})
+    super()
+    h.each_pair do |key, value|
+      self.put(key, value)
+    end
+  end
 end
 
 def get_piql_classes(path = PIQL_JAR_PATH)
