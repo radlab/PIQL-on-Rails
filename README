@@ -5,47 +5,8 @@ jruby script/plugin install git://github.com/radlab/PIQL-on-Rails.git
 If you prefer to use SVN:
 svn checkout http://svn.github.com/radlab/PIQL-on-Rails.git
 
-It requires that db/piql.jar exists and that it is a valid compiled PIQL schema. See below on how to compile a PIQL schema.
+See Wiki for more information including an example Rails project.
 
-Here is a very basic app that sort of works that you can look at.
-Go to users/new to create a new user, then go to users/index/:username to see all users that match the username.
-http://www.cs.berkeley.edu/~aaronb/piql_rails.tar.gz
+The database is not persistent at the moment. It is reset every time you reset the server. See the wiki on writing a loader script to load data into the database on start.
 
-The basics are the following:
-Suppose we have a User entity with a field name.
-u = User.new creates a new user.
-u.name gets the name attribute.
-u.put("name", "Alice") sets the name attribute to "Alice".
-u.name = "Alice" does the same as above as long as you have the following line in your User model:
-include PIQLEntity
-Right now it is required that there is a file in the models directory for each entity, lowercased.
-
-Anytime you read or write from the database you need to pass in $piql_env as the last argument.
-
-u.save($piql_env) saves the user to the database.
-
-Suppose there is a query userByName that finds all users with a given name.
-Queries.userByName("Alice", $piql_env) will run that query with "Alice" as the argument.
-All queries are called from the Queries class. Don't forget the $piql_env at the end of every call.
-
-Hopefully the $piql_env won't be necessary in the future.
-
-The database is not persistent at the moment. It is reset every time you reset the server. Setting up a persistent database server takes a bit of work.
-
-Please let us know what are the most important features/bugs to add/fix so that you can get work done. I will likely be in the RAD Lab most of tomorrow, so come by and ask questions.
-
-Creating a piql jar
-
-This is a rewrite of what Stephen sent before, however the maven pom.xml file has changed.
-
-I think this will be made easier in the future (ie. not require maven), so you might just want to hold out until that happens. Michael, Stephen is this true?
-
-1. Install Maven 2. This is maven2 on MacPorts. Sorry Windows users I don't know how to help you except to give a download link:
-http://maven.apache.org/download.html
-2. place settings.xml from http://radlab.cs.berkeley.edu/wiki/Infrastructure in your $HOME/.m2 folder
-3. create a new directory and put the pom.xml file attached to this email in there.
-4. Create the directories src/main/piql and put a *.piql spec in there.
-5. run `mvn assembly:assembly` from the directory where the pom.xml is.
-6. your jar with all dependencies is going to be located in target/*-jar-with-dependencies.jar
-
-Now move this jar to your rails db directory and rename it piql.jar.
+Please let us know what are the most important features/bugs to add/fix so that you can get work done.
