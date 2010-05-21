@@ -1,7 +1,9 @@
+Install now works even easier:
+
+jruby script/plugin install git://github.com/radlab/PIQL-on-Rails.git
+
 If you prefer to use SVN:
 svn checkout http://svn.github.com/radlab/PIQL-on-Rails.git
-
-Just extract that into your vendor/plugin directory.
 
 It requires that db/piql.jar exists and that it is a valid compiled PIQL schema. See below on how to compile a PIQL schema.
 
