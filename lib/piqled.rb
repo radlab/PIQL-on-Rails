@@ -19,8 +19,6 @@ if active_record
     end
   end
 
-  # Load dummy model file
-
 else
 
   module PIQLEntity
@@ -44,7 +42,7 @@ else
   
     module ClassMethods
       def pfind(piql, ar)
-        Query.send(piql[0], *piql[1..-1])
+        Query.send(piql[0], *piql[1..-1]).to_a
       end
     end
 
