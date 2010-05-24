@@ -18,6 +18,16 @@ module PIQLEntity
   def save (env = $piql_env)
     super(env)
   end
+  
+  module ClassMethods
+    def find(piql, ar)
+      Query.send(piql[0], *piql[1..-1])
+    end
+  end
+
+  def self.included(base)
+    base.extend(ClassMethods)
+  end
 end
 
 class Query
