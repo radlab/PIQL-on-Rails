@@ -81,6 +81,8 @@ else
       def before_validation(*args)
       end
 
+      def method_missing(symbol, *args)
+      end
     end
 
     def self.included(base)
