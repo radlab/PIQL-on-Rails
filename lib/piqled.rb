@@ -39,6 +39,18 @@ else
     def save (env = $piql_env)
       super(env)
     end
+
+    def belongs_to(*args)
+    end
+
+    def has_many(*args)
+    end
+
+    def has_one(*args)
+    end
+
+    def has_and_belongs_to_many(*args)
+    end
   
     module ClassMethods
       def pfind(piql, ar)
