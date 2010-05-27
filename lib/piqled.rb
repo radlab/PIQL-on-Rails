@@ -78,6 +78,9 @@ else
       def after_create(*args)
       end
 
+      def before_validation(*args)
+      end
+
     end
 
     def self.included(base)
