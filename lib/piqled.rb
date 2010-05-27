@@ -56,6 +56,28 @@ else
 
       def has_and_belongs_to_many(*args)
       end
+
+      def validates_presence_of(*args)
+      end
+
+      def validates_uniqueness_of(*args)
+      end
+
+      def validate(*args)
+      end
+
+      def validates_length_of(*args)
+      end
+
+      def validates_confirmation_of(*args)
+      end
+
+      def before_save(*args)
+      end
+
+      def after_create(*args)
+      end
+
     end
 
     def self.included(base)
