@@ -141,7 +141,7 @@ else
   include_piql(classes)
   require_models(classes)
 
-  $piql_env = Configurator.new.configureTestCluster
+  $piql_env = TestConfigurator.new.configureTestCluster
 
   include_class "scala.collection.immutable.List"
 
