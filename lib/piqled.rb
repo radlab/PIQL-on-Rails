@@ -136,7 +136,8 @@ require PIQL_JAR_PATH
 classes = get_piql_classes
 
 if USE_AR
-  active_recordify(classes) 
+  active_recordify(classes)
+  require_models(classes)
 else
   include_piql(classes)
   require_models(classes)
