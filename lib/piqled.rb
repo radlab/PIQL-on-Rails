@@ -17,6 +17,10 @@ if USE_AR
     def self.included(base)
       base.extend(ClassMethods)
     end
+
+    def query(qname, *args)
+      self.send(qname, *args)
+    end
   end
 
 else
@@ -38,6 +42,10 @@ else
 
     def save(perform_validation = true, env = $piql_env)
       super(env)
+    end
+
+    def query(qname, *args)
+      self.send(qname, *args << $piql_env)
     end
   
     module ClassMethods
@@ -138,6 +146,7 @@ classes = get_piql_classes
 if USE_AR
   active_recordify(classes)
   require_models(classes)
+  loader_path = "#{RAILS_ROOT}/db/ar_loader.rb"
 else
   include_piql(classes)
   require_models(classes)
@@ -161,5 +170,6 @@ else
   end
 
   loader_path = "#{RAILS_ROOT}/db/loader.rb"
-  require loader_path if File.exists?(loader_path)
 end
+
+require loader_path if File.exists?(loader_path)
