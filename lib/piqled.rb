@@ -1,12 +1,12 @@
 # Piqled
 
-active_record = begin
-                  USE_AR
-                rescue NameError
-                  false
-                end
+begin
+  USE_AR
+rescue NameError
+  USE_AR = false
+end
 
-if active_record
+if USE_AR
   module PIQLEntity
     module ClassMethods
       def pfind(piql, ar)
@@ -26,8 +26,6 @@ else
       str = symbol.to_s
       if str[-1] == '='[0]
         self.put(str[0..-2], args[0])
-      elsif
-        base.send(symbol, *args << $piql_env)
       end
     end
 
@@ -137,7 +135,7 @@ require PIQL_JAR_PATH
 
 classes = get_piql_classes
 
-if active_record
+if USE_AR
   active_recordify(classes) 
 else
   include_piql(classes)
