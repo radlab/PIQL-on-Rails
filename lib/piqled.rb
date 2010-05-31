@@ -26,6 +26,8 @@ else
       str = symbol.to_s
       if str[-1] == '='[0]
         self.put(str[0..-2], args[0])
+      elsif
+        base.send(symbol, *args << $piql_env)
       end
     end
 
