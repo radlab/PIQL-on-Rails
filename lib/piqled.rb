@@ -54,6 +54,7 @@ else
       end
 
       def belongs_to(*args)
+        base.class_eval("def #{args[0].to_s}=(arg); self.#{args[0].to_s}_id = arg.key; end")
       end
       
       def has_many(*args)
