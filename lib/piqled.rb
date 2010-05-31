@@ -38,7 +38,7 @@ else
       end
     end
 
-    def save (env = $piql_env)
+    def save(perform_validation = true, env = $piql_env)
       super(env)
     end
   
